@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block titulo %}Bandeja de revisión{% endblock %}
+{% block contenido %}
+<div class="card">
+  <h2>Bandeja de mensajes pendientes de revisión ({{ filas|length }})</h2>
+  <p class="meta">Mensajes con confianza menor que τ = {{ '%.2f'|format(tau) }}. Confirma la etiqueta correcta; la revisión se guarda y no reentrena el modelo.</p>
+  {% for f in filas %}
+  <div style="border-top:1px solid var(--line);padding:12px 0">
+    <div class="meta">id {{ f.id }} · {{ f.creado_en }} · P(spam) = {{ '%.3f'|format(f.p_spam) }} · confianza = {{ '%.3f'|format(f.confianza) }} · sugerencia del modelo: {{ 'spam' if f.etiqueta_modelo == 1 else 'ham' }}</div>
+    <div class="msg" style="margin-top:6px">{{ f.texto }}</div>
+    <form class="form-rev" method="post" action="{{ url_for('revisar', mensaje_id=f.id) }}">
+      <input type="text" name="revisor" placeholder="Nombre del revisor" required>
+      <input type="text" name="comentario" placeholder="Comentario (opcional)">
+      <button type="submit" name="etiqueta" value="0" class="sec">Confirmar: legítimo</button>
+      <button type="submit" name="etiqueta" value="1">Confirmar: spam</button>
+    </form>
+  </div>
+  {% else %}
+  <p>No hay mensajes pendientes.</p>
+  {% endfor %}
+</div>
+{% endblock %}

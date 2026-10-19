@@ -1,0 +1,24 @@
+digraph G {
+  graph [rankdir=TB, fontname="EB Garamond", fontsize=11, nodesep=0.3, ranksep=0.28, bgcolor="white", pad=0.1];
+  node  [shape=box, style="rounded,filled", fillcolor="#f3f2ee", color="#52514e", fontname="EB Garamond", fontsize=11, penwidth=0.9, margin="0.1,0.04"];
+  edge  [color="#52514e", arrowsize=0.6, penwidth=0.9, fontname="EB Garamond", fontsize=9.5];
+  m [label="Mensaje SMS x"];
+  v [label="TF-IDF (vocabulario\ndel entrenamiento)"];
+  s [label="Modelo calibrado\np = P(spam | x)"];
+  {rank=same; m; v; s;}
+  c [label="¿máx(p, 1 − p) ≥ τ?", shape=diamond, style="filled", fillcolor="#ffffff", margin="0.02,0.02"];
+  y [label="¿p > 0.5?", shape=diamond, style="filled", fillcolor="#ffffff", margin="0.02,0.02"];
+  pr [label="Pendiente de revisión\n(abstención; no es una clase)", fillcolor="#fff6d6", color="#8a6d00"];
+  {rank=same; y; pr;}
+  sp [label="Spam (automático)", fillcolor="#fde6dc", color="#c94f1f"];
+  hm [label="Legítimo (automático)\np ≤ 0.5", fillcolor="#e3eefb", color="#2a78d6"];
+  rv [label="Revisor confirma\nham (0) o spam (1)\n→ registro SQLite"];
+  {rank=same; sp; hm; rv;}
+  m -> v -> s;
+  s -> c;
+  c -> y [label=" sí"];
+  c -> pr [label=" no"];
+  y -> sp [label=" sí"];
+  y -> hm [label=" no"];
+  pr -> rv;
+}

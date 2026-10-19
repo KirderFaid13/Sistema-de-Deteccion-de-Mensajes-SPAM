@@ -1,0 +1,20 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.csv text eol=lf
+*.json text eol=lf
+*.ps1 text eol=crlf
+*.pdf binary
+*.docx binary
+*.zip binary
+*.joblib binary
+*.png binary
+*.jpg binary
+*.ipynb text eol=lf
+
+# Evidencia congelada: conservar sus bytes, incluso al clonar en Windows.
+codigo/results/** -text
+codigo/notebooks/01_experimento_spam_sms.ipynb -text

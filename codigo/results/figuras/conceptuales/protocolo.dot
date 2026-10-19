@@ -1,0 +1,20 @@
+digraph G {
+  graph [rankdir=TB, fontname="EB Garamond", fontsize=11, nodesep=0.22, ranksep=0.26, bgcolor="white", pad=0.1];
+  node  [shape=box, style="rounded,filled", fillcolor="#f3f2ee", color="#52514e", fontname="EB Garamond", fontsize=11, penwidth=0.9, margin="0.1,0.04"];
+  edge  [color="#52514e", arrowsize=0.6, penwidth=0.9, fontname="EB Garamond", fontsize=9.5];
+  a [label="1. Lectura del ZIP oficial (QUOTE_NONE) y diagnóstico\n5574 mensajes · 403 duplicados exactos · 0 contradicciones"];
+  b [label="2. Partición estratificada y agrupada por duplicados (semilla 42)"];
+  tr [label="Entrenamiento\n60 % · 3344", fillcolor="#e3eefb", color="#2a78d6"];
+  va [label="Validación\n20 % · 1115", fillcolor="#fff6d6", color="#8a6d00"];
+  te [label="Prueba\n20 % · 1115", fillcolor="#fde6dc", color="#c94f1f"];
+  {rank=same; tr; va; te;}
+  c [label="3. CV agrupada de 5 pliegues (sólo entrenamiento)\nC: 0.1, 1, 10 × n-gramas (1,1), (1,2)\nTF-IDF reajustado en cada pliegue"];
+  d [label="4. Ajuste y calibración en entrenamiento\nRL: probabilidades nativas\nSVM: sigmoide de Platt con CV agrupada"];
+  e [label="5. Decisiones en validación\nmodelo: F1 de spam · τ: máxima cobertura\ncon error ≤ 1 % y revisión ≤ 15 %"];
+  f [label="6. Congelamiento\ndecisiones_congeladas.json · modelo_spam_v1.joblib", style="rounded,bold,filled", fillcolor="#ffffff"];
+  g [label="7. Evaluación única en prueba\nmétricas binarias, IC bootstrap y selectivas"];
+  a -> b; b -> tr; b -> va; b -> te;
+  tr -> c -> d -> e -> f -> g;
+  va -> e [style=dashed];
+  te -> g [style=dashed, label=" sólo al final"];
+}

@@ -1,0 +1,27 @@
+:root{--ink:#1d1d1b;--ink2:#52514e;--line:#dcdad5;--bg:#fafaf8;--card:#ffffff;--ham:#2a78d6;--spam:#c94f1f;--rev:#8a6d00;--revbg:#fff6d6;}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.45}
+header{background:#1d1d1b;color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+header h1{font-size:17px;margin:0;font-weight:600}
+nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:14px;opacity:.9}
+nav a.activo{border-bottom:2px solid #fff}
+main{max-width:860px;margin:24px auto;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin-bottom:18px}
+h2{font-size:18px;margin:0 0 12px}
+textarea{width:100%;min-height:110px;font:inherit;padding:10px;border:1px solid var(--line);border-radius:6px}
+button,.btn{font:inherit;padding:8px 16px;border-radius:6px;border:1px solid #1d1d1b;background:#1d1d1b;color:#fff;cursor:pointer;text-decoration:none;display:inline-block}
+button.sec{background:#fff;color:#1d1d1b}
+.meta{color:var(--ink2);font-size:13px}
+.badge{display:inline-block;padding:4px 12px;border-radius:999px;font-weight:600;font-size:14px}
+.b-legitimo{background:#e3eefb;color:#174e8f}
+.b-spam{background:#fde6dc;color:#8f3410}
+.b-pendiente_revision{background:var(--revbg);color:var(--rev)}
+.msg{background:#f3f2ee;border-radius:6px;padding:10px 12px;font-family:Consolas,monospace;font-size:13.5px;white-space:pre-wrap;word-break:break-word}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--ink2)}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.form-rev{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.form-rev input[type=text]{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;width:150px}
+.aviso{font-size:13px;color:var(--ink2);border-left:3px solid var(--line);padding-left:10px}
+.error{color:#a3271f}

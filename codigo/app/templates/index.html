@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block contenido %}
+<div class="card">
+  <h2>Clasificar un mensaje SMS</h2>
+  <form method="post" action="{{ url_for('clasificar_mensaje') }}">
+    <textarea name="texto" maxlength="{{ max_len }}" placeholder="Escribe o pega el mensaje SMS (en inglés)…" required></textarea>
+    <p><button type="submit">Clasificar</button></p>
+  </form>
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+  <p class="meta">Modelo {{ version }} · umbral de confianza τ = {{ '%.2f'|format(tau) }} · mensajes pendientes en bandeja: {{ n_pend }}</p>
+  <p class="aviso">El modelo se entrenó con SMS en inglés (UCI SMS Spam Collection). No está validado para español, WhatsApp, correo ni detección específica de phishing. Los mensajes enviados se guardan en una base SQLite local para su revisión.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{
+  "n": 1115,
+  "tp": 0,
+  "fp": 0,
+  "fn": 149,
+  "tn": 966,
+  "precision_spam": 0.0,
+  "recall_spam": 0.0,
+  "f1_spam": 0.0,
+  "precision_ham": 0.8663677130044843,
+  "recall_ham": 1.0,
+  "f1_ham": 0.9283998077847189,
+  "accuracy": 0.8663677130044843
+}

@@ -1,0 +1,7 @@
+tipo_sonda,texto,p_spam,confianza,decision
+conversación personal,Are we still meeting for lunch tomorrow at 1pm?,0.002,0.998,legitimo
+premio clásico,Congratulations! You have won a 500 GBP voucher. Text CLAIM to 80086 now to collect your prize,0.997,0.997,spam
+oferta ambigua,"You have been selected for a special offer, reply to this number",0.576,0.576,pendiente_revision
+patrón actual de entrega fallida,Your package could not be delivered. Please confirm your details at the link we sent,0.026,0.974,legitimo
+suplantación bancaria sin enlace,"Hi, this is the bank. Please call us back about your account today",0.188,0.812,legitimo
+notificación legítima con STOP,Reminder: your appointment is tomorrow. Reply STOP to cancel,0.958,0.958,spam

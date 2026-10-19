@@ -1,0 +1,29 @@
+digraph G {
+  graph [rankdir=TB, fontname="EB Garamond", fontsize=11, nodesep=0.25, ranksep=0.32, bgcolor="white", pad=0.1, newrank=true];
+  node  [shape=box, style="rounded,filled", fillcolor="#f3f2ee", color="#52514e", fontname="EB Garamond", fontsize=11, penwidth=0.9, margin="0.1,0.05"];
+  edge  [color="#52514e", fontname="EB Garamond", fontsize=9.5, arrowsize=0.6, penwidth=0.9];
+  subgraph cluster_off { label="Fuera de línea: notebook (Python, pandas, scikit-learn)"; labeljust=l; style="rounded,dashed"; color="#8a8984"; fontsize=10.5;
+    ds [label="ZIP oficial UCI\nSMS Spam Collection v.1"];
+    nb [label="Notebook experimental\npartición, CV, calibración,\nτ y evaluación"];
+    mdl [label="Artefacto Joblib (v1)\nTF-IDF + SVM lineal\ncalibrada + τ", fillcolor="#e3eefb", color="#2a78d6"];
+    {rank=same; ds; nb; mdl;}
+    ds -> nb -> mdl;
+  }
+  subgraph cluster_on { label="En línea: prototipo web (Flask + SQLite)"; labeljust=l; style="rounded"; color="#52514e"; fontsize=10.5;
+    ui [label="Navegador\nformulario"];
+    fl [label="Flask: /clasificar,\n/pendientes, /revisar,\n/revisiones"];
+    rule [label="Regla de decisión\n¿máx(p, 1 − p) ≥ τ?"];
+    {rank=same; ui; fl; rule;}
+    db [label="SQLite\nmensajes · revisiones", shape=cylinder, fillcolor="#fff6d6", color="#8a6d00"];
+    rev [label="Revisor humano\n(bandeja)"];
+    {rank=same; db; rev;}
+    ui -> fl [label=" texto"];
+    fl -> rule [label=" P(spam)"];
+    rule -> db [label=" decisión"];
+    db -> rev [label=" pendientes"];
+    rev -> db [label=" etiqueta", constraint=false];
+  }
+  mdl -> fl [label=" joblib.load", style=bold];
+  re [label="Reentrenamiento con revisiones\n(etapa futura, no implementada)", style="rounded,dashed", fillcolor="white", color="#8a8984", fontcolor="#52514e"];
+  db -> re [style=dashed, color="#8a8984"];
+}

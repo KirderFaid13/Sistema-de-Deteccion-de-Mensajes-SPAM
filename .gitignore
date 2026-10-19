@@ -1,0 +1,48 @@
+# Configuración local y credenciales
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Entornos y cachés de Python
+.venv/
+.venv*/
+venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+**/.ipynb_checkpoints/
+htmlcov/
+.coverage*
+
+# Mensajes y revisiones de cada instalación: nunca versionar la base de uso
+codigo/app/instance/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite-*
+revisiones.csv
+
+# Archivos de editores y sistema operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+~$*
+
+# Paquetes duplicados y material interno de la revisión editorial
+/codigo.zip
+/Articulo/figuras_y_resultados.zip
+/Articulo/Articulo_Grupo03_Deteccion_spam_SMS.docx
+/Articulo/Articulo_Grupo03_Deteccion_spam_SMS.pdf
+/Articulo/PROMPT_TRASPASO.md
+/Articulo/revision/
+
+# Conservar expresamente artefactos necesarios y evidencia congelada
+!codigo/models/*.joblib
+!codigo/results/
+!Dataset/sms+spam+collection.zip

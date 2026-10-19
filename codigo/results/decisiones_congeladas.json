@@ -1,0 +1,23 @@
+{
+  "fecha_congelamiento": "2026-10-18T19:50:08-05:00",
+  "modelo_elegido": "linsvm",
+  "motivo": "mayor F1 de spam en validación",
+  "hiperparametros": {
+    "C": 10.0,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "f1_cv": 0.9596675310627243
+  },
+  "calibracion": "sigmoide (Platt), CV agrupada 5 pliegues en entrenamiento",
+  "tau": 0.7,
+  "tau_factible_en_validacion": true,
+  "criterio_tau": "max cobertura con error_aceptados<=0.010 y tasa_revision<=0.15 (validación)",
+  "metas_preregistradas_prueba": {
+    "f1_spam_min": 0.9,
+    "precision_spam_min": 0.95
+  },
+  "ruta_modelo": "models/modelo_spam_v1.joblib",
+  "sha256_modelo": "de87978042e6c821cb8a4fb2dff3cee4ada58ac3ff1ef65ef0ea703e55482705"
+}

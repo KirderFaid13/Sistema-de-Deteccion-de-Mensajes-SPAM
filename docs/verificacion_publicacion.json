@@ -1,0 +1,55 @@
+{
+  "fecha": "2026-10-19T01:25:18-05:00",
+  "python": "3.13.7",
+  "plataforma": "Windows x64",
+  "entorno_virtual_limpio": true,
+  "instalacion": [
+    "codigo/requirements-app.txt",
+    "codigo/requirements-test.txt"
+  ],
+  "paquetes": {
+    "numpy": "2.4.4",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "Flask": "3.1.3",
+    "pandas": "3.0.2",
+    "pytest": "9.1.1"
+  },
+  "notebook_ejecutado": false,
+  "entrenamiento_ejecutado": false,
+  "evaluacion_prueba_ejecutada": false,
+  "modelo_sha256": "de87978042e6c821cb8a4fb2dff3cee4ada58ac3ff1ef65ef0ea703e55482705",
+  "pip_check": "No broken requirements found.",
+  "pytest": {
+    "codigo_salida": 0,
+    "salida": "....                                                                     [100%]\n4 passed in 12.24s"
+  },
+  "artefacto": {
+    "carga_correcta": true,
+    "tau": 0.7,
+    "version": "v1",
+    "modelo": "CalibratedClassifierCV"
+  },
+  "recorrido_funcional": {
+    "inicio": true,
+    "estilos": true,
+    "entrada_vacia": true,
+    "legitimo": true,
+    "spam": true,
+    "pendiente": true,
+    "tres_clasificaciones_guardadas": true,
+    "revision_guardada": true,
+    "csv_una_revision": true,
+    "SQLite_temporal": true
+  },
+  "servidor_http_local": {
+    "inicio_correcto": true,
+    "GET_inicio": 200,
+    "direccion": "127.0.0.1",
+    "cerrado_al_finalizar": true
+  },
+  "artefactos_congelados_sin_cambios": true,
+  "n_archivos_protegidos": 65,
+  "requisitos_experimento_historico_instalados": false
+}

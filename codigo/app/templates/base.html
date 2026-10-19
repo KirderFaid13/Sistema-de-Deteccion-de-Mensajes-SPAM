@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block titulo %}Detector de spam SMS{% endblock %} · Grupo 03 UPN</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+<header>
+  <h1>Detector de spam SMS · prototipo académico (Grupo 03, UPN)</h1>
+  <nav>
+    <a href="{{ url_for('inicio') }}" class="{{ 'activo' if request.endpoint in ('inicio','clasificar_mensaje') }}">Clasificar</a>
+    <a href="{{ url_for('pendientes') }}" class="{{ 'activo' if request.endpoint=='pendientes' }}">Bandeja de revisión</a>
+    <a href="{{ url_for('revisiones') }}" class="{{ 'activo' if request.endpoint=='revisiones' }}">Revisiones</a>
+  </nav>
+</header>
+<main>{% block contenido %}{% endblock %}</main>
+</body>
+</html>

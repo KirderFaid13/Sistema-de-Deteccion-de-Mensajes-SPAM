@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block titulo %}Resultado{% endblock %}
+{% block contenido %}
+<div class="card">
+  <h2>Resultado de la clasificación</h2>
+  <div class="msg">{{ texto }}</div>
+  <p style="margin-top:14px">
+    Decisión: <span class="badge b-{{ r.decision }}">
+    {% if r.decision == 'legitimo' %}Legítimo (automático){% elif r.decision == 'spam' %}Spam (automático){% else %}Pendiente de revisión humana{% endif %}
+    </span>
+  </p>
+  <table style="max-width:460px">
+    <tr><th>Probabilidad estimada de spam</th><td class="num">{{ '%.3f'|format(r.p_spam) }}</td></tr>
+    <tr><th>Confianza = máx(P(ham), P(spam))</th><td class="num">{{ '%.3f'|format(r.confianza) }}</td></tr>
+    <tr><th>Umbral τ</th><td class="num">{{ '%.2f'|format(tau) }}</td></tr>
+    <tr><th>Etiqueta sugerida por el modelo</th><td class="num">{{ 'spam' if r.etiqueta_modelo == 1 else 'ham' }}</td></tr>
+  </table>
+  {% if r.decision == 'pendiente_revision' %}
+  <p class="aviso">La confianza es menor que τ: el sistema no decide automáticamente y envía el mensaje (id {{ mensaje_id }}) a la bandeja de revisión.</p>
+  {% endif %}
+  <p><a class="btn" href="{{ url_for('inicio') }}">Clasificar otro mensaje</a></p>
+</div>
+{% endblock %}

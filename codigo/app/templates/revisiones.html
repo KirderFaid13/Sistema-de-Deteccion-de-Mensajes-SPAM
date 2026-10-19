@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block titulo %}Revisiones{% endblock %}
+{% block contenido %}
+<div class="card">
+  <h2>Revisiones registradas ({{ filas|length }})</h2>
+  <p class="meta">Registro para análisis de errores y futuras mejoras. <a href="{{ url_for('revisiones_csv') }}">Exportar CSV</a></p>
+  <table>
+    <tr><th>id</th><th>Mensaje</th><th class="num">P(spam)</th><th>Modelo</th><th>Revisor</th><th>Coincide</th></tr>
+    {% for f in filas %}
+    <tr>
+      <td>{{ f.id }}</td>
+      <td style="max-width:330px">{{ f.texto[:120] }}{% if f.texto|length > 120 %}…{% endif %}</td>
+      <td class="num">{{ '%.3f'|format(f.p_spam) }}</td>
+      <td>{{ 'spam' if f.etiqueta_modelo == 1 else 'ham' }}</td>
+      <td>{{ 'spam' if f.etiqueta_revisor == 1 else 'ham' }}<br><span class="meta">{{ f.revisor }} · {{ f.revisado_en[:16] }}</span></td>
+      <td>{{ 'sí' if f.etiqueta_modelo == f.etiqueta_revisor else 'no' }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
