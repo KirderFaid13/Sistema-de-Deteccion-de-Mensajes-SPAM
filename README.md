@@ -1,0 +1,2 @@
+# Sistema-de-Detecci-n-de-spam-en-mensajes-SMS---MACHINE-LEARNING
+Es una aplicación web que analiza un SMS y estima si es legítimo o spam. Cuando la confianza es insuficiente, deja el mensaje pendiente para que una persona lo revise; guarda esa decisión y permite exportar las revisiones. El modelo actual está evaluado con mensajes en inglés.  Curso de Sis. Int y Machine Learning - Docente: Frank Huamachuco
