@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block titulo %}Mensaje {{ posicion }} de {{ total }}{% endblock %}
+{% block contenido %}
+<div class="card">
+  <p class="meta">Mensaje {{ posicion }} de {{ total }}</p>
+  <div class="msg msg-estudio">{{ texto }}</div>
+  <form method="post" action="{{ url_for('estudio.responder', sesion_id=sesion_id, posicion=posicion) }}" class="form-actions" id="respuesta">
+    <input type="hidden" name="ms_cliente" id="ms_cliente">
+    <button type="submit" name="etiqueta" value="0" class="sec">Legítimo</button>
+    <button type="submit" name="etiqueta" value="1">Spam</button>
+  </form>
+</div>
+<script>
+  // Tiempo desde que el mensaje se pinta en pantalla hasta que la persona pulsa un botón.
+  const inicio = performance.now();
+  document.getElementById("respuesta").addEventListener("submit", () => {
+    document.getElementById("ms_cliente").value = Math.round(performance.now() - inicio);
+  });
+</script>
+{% endblock %}

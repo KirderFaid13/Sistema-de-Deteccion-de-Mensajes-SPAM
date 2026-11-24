@@ -1,0 +1,9 @@
+conjunto,marcadores_en_el_mensaje,ham,fp,tasa_fp
+entrenamiento (fuera de pliegue),0,2873,1,0.0003480682213713888
+entrenamiento (fuera de pliegue),1 o más,23,3,0.13043478260869565
+validación,0,960,2,0.0020833333333333333
+validación,1 o más,6,0,0.0
+prueba,0,955,2,0.0020942408376963353
+prueba,1 o más,10,0,0.0
+los tres,0,4788,5,0.0010442773600668337
+los tres,1 o más,39,3,0.07692307692307693

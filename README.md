@@ -12,7 +12,7 @@ El repositorio incluye el código, el modelo congelado, el notebook ejecutado, l
 - **Curso:** Sistemas Inteligentes y Machine Learning.
 - **Docente:** Frank Huamachuco, según la presentación original de este repositorio.
 - **Grupo:** 03. **Periodo:** 2026-2.
-- **Integrantes:** Baca Flores, Flavio Manuel André; Espinoza Marquez, Adriano Felipe; Goray Gonzales, Nicolás Alexander; Paredes Moya, Pablo Sebastián.
+- **Integrantes:** Baca Flores, Flavio Manuel André; Espinoza Marquez, Adriano Felipe; Goray Gonzales, Nicolás Alexander; Paredes Moya, Pablo Sebastián; Vigo Aleman, Jorge Andres.
 
 Los correos, ORCID y demás evidencias individuales que faltan permanecen como pendientes en el artículo. El código y la documentación se desarrollaron con asistencia de IA; cada integrante debe revisarlos, comprenderlos y poder explicarlos. No se certifica un porcentaje de avance ni autoría individual a partir de la sola existencia del repositorio.
 
@@ -81,7 +81,8 @@ python3.13 -m venv .venv
 2. El resultado muestra la decisión, `P(spam)`, la confianza y el umbral utilizado.
 3. Si aparece **Pendiente de revisión humana**, abre **Bandeja de revisión**.
 4. Introduce el nombre del revisor y, opcionalmente, un comentario. Confirma **legítimo** o **spam**.
-5. Abre **Revisiones** para consultar lo registrado y utiliza **Exportar CSV** para descargarlo.
+5. Abre **Historial** para consultar todas las predicciones y el resumen de legítimos, spam y pendientes.
+6. Abre **Revisiones** para consultar las etiquetas humanas y utiliza **Exportar CSV** para descargarlo.
 
 Puedes usar estos mensajes sintéticos de la demostración. Son ejemplos funcionales, no un nuevo conjunto de evaluación:
 
@@ -260,6 +261,7 @@ La aplicación usa HTML y formularios; no ofrece una API JSON.
 - **`GET /pendientes`**: lista mensajes con decisión `pendiente_revision` y sin revisión guardada.
 - **`POST /revisar/<mensaje_id>`**: recibe `etiqueta` (`0` o `1`), `revisor` y `comentario`. Nombre limitado a 60 caracteres y comentario a 300.
 - **`GET /revisiones`**: muestra revisiones de más reciente a más antigua.
+- **`GET /historial`**: muestra las predicciones almacenadas, estadísticas resumidas y filtros por decisión.
 - **`GET /revisiones.csv`**: descarga las revisiones en CSV.
 - **`GET /static/estilo.css`**: hoja de estilos servida por Flask.
 
@@ -437,8 +439,24 @@ No subas `.venv/`, `.env`, bases SQLite ni CSV con revisiones de usuarios. `.git
 
 ## 13. Artículo, pendientes y licencias
 
-- [Artículo editable en Word](Articulo/Articulo_Grupo03_Deteccion_spam_SMS_revisado.docx).
-- [Artículo en PDF, 45 páginas revisadas](Articulo/Articulo_Grupo03_Deteccion_spam_SMS_revisado.pdf).
+- [Artículo, versión sintetizada (Word)](Articulo/Articulo_Grupo03_Deteccion_spam_SMS_final.docx).
+- [Artículo, versión sintetizada (PDF, 30 páginas)](Articulo/Articulo_Grupo03_Deteccion_spam_SMS_final.pdf).
+- [Informe técnico complementario (PDF, 46 páginas)](Articulo/Informe_tecnico_Grupo03_Deteccion_spam_SMS.pdf): la versión extendida entregada como avance, con el detalle que el artículo ya no repite.
+- Los archivos `_revisado` son la versión anterior de octubre y se conservan sólo como historial.
+
+### Reproducción, análisis de errores y prueba con revisores (noviembre de 2026)
+
+**Reproducir el experimento completo en tu equipo.** Copia el proyecto a una carpeta temporal, instala las versiones exactas, ejecuta el notebook y compara cada archivo de resultados con el original. No modifica nada del repositorio salvo la evidencia que escribe en `docs/reproduccion/`.
+
+```powershell
+py -3.13 codigo/reproducir.py --integrante "Apellidos, Nombres"
+```
+
+**Análisis de falsos negativos.** `codigo/analisis/analisis_falsos_negativos.py` describe los falsos negativos del modelo congelado y compara alternativas sin usar la prueba; `codigo/analisis/figura_falsos_negativos.py` dibuja la figura. Las salidas están en `codigo/results/analisis_fn/` y la clasificación por tipo de mensaje, en `codigo/analisis/codificacion_fn.csv`. Requieren el entorno de `codigo/requirements.txt`.
+
+**Prueba controlada con revisores.** La aplicación incluye la pantalla **Prueba con revisores** (`/estudio`): cada persona etiqueta 60 mensajes fijos y se mide el tiempo por mensaje. El procedimiento está en [codigo/estudio/PROTOCOLO.md](codigo/estudio/PROTOCOLO.md); las respuestas exportadas se analizan con `codigo/estudio/analizar_estudio.py`.
+
+Evidencia bibliográfica añadida: [búsqueda de evidencia local](docs/busqueda_evidencia_local_2026-11-10.md) y [verificación de indexación](docs/verificacion_indexacion_2026-11-10.md).
 - [Cambios realizados y pendientes](Articulo/CAMBIOS_Y_PENDIENTES.md).
 - [Registro de asistencia de IA](Articulo/anexos/registro_uso_IA.md).
 - [Avisos de licencias y atribución](docs/AVISOS_LICENCIAS.md).

@@ -20,6 +20,8 @@ Abre [http://127.0.0.1:5000](http://127.0.0.1:5000). La base SQLite se crea auto
 
 El modelo ya está entrenado. No necesitas ejecutar el notebook ni tener Jupyter para iniciar la web. Conserva scikit-learn 1.9.1 para cargar el artefacto; una incompatibilidad se resuelve en el entorno, preservando el modelo congelado.
 
+La interfaz incluye ejemplos rápidos y contador de caracteres en el formulario, una bandeja de revisión, un historial con filtros y estadísticas, y exportación CSV de las revisiones.
+
 ## Ejecutar pruebas desde esta carpeta
 
 ```powershell

@@ -1,13 +1,43 @@
 {% extends "base.html" %}
 {% block contenido %}
+<div class="hero">
+  <div>
+    <p class="eyebrow">ANÁLISIS LOCAL · MODELO {{ version|upper }}</p>
+    <h2>¿Este mensaje parece spam?</h2>
+    <p class="hero-copy">Pega un SMS y obtén una predicción explicable. Los casos dudosos pasan a revisión humana.</p>
+  </div>
+  <div class="hero-mark">◎</div>
+</div>
 <div class="card">
-  <h2>Clasificar un mensaje SMS</h2>
+  <div class="section-heading"><h2>Analizar mensaje</h2><span class="status-dot">Listo para analizar</span></div>
   <form method="post" action="{{ url_for('clasificar_mensaje') }}">
-    <textarea name="texto" maxlength="{{ max_len }}" placeholder="Escribe o pega el mensaje SMS (en inglés)…" required></textarea>
-    <p><button type="submit">Clasificar</button></p>
+    <textarea id="texto" name="texto" maxlength="{{ max_len }}" placeholder="Escribe o pega el mensaje SMS (en inglés)…" required></textarea>
+    <div class="textarea-footer"><span class="meta">No incluyas datos personales reales.</span><span id="contador">0/{{ max_len }}</span></div>
+    <div class="form-actions"><button type="submit">Analizar mensaje <span aria-hidden="true">→</span></button><button type="button" class="sec" id="limpiar">Limpiar</button></div>
   </form>
   {% if error %}<p class="error">{{ error }}</p>{% endif %}
-  <p class="meta">Modelo {{ version }} · umbral de confianza τ = {{ '%.2f'|format(tau) }} · mensajes pendientes en bandeja: {{ n_pend }}</p>
-  <p class="aviso">El modelo se entrenó con SMS en inglés (UCI SMS Spam Collection). No está validado para español, WhatsApp, correo ni detección específica de phishing. Los mensajes enviados se guardan en una base SQLite local para su revisión.</p>
+  <div class="quick-examples">
+    <span class="meta">Prueba con un ejemplo:</span>
+    <button type="button" class="example" data-message="Are we still meeting for lunch tomorrow at 1pm?">Conversación normal</button>
+    <button type="button" class="example" data-message="Congratulations! You have won a 500 GBP voucher. Text CLAIM to 80086 now to collect your prize">Premio no solicitado</button>
+  </div>
 </div>
+<div class="info-grid">
+  <div class="info-item"><strong>Modelo local</strong><span>No requiere API ni conexión para clasificar.</span></div>
+  <div class="info-item"><strong>Revisión humana</strong><span>La incertidumbre no se fuerza a una decisión.</span></div>
+  <div class="info-item"><strong>{{ n_pend }} pendientes</strong><span><a href="{{ url_for('pendientes') }}">Revisar bandeja</a></span></div>
+</div>
+<div class="card compact">
+  <p class="aviso">El modelo se entrenó con SMS en inglés (UCI SMS Spam Collection). No está validado para español, WhatsApp, correo ni detección específica de phishing. Los mensajes se guardan en una base SQLite local.</p>
+</div>
+<script>
+  const texto = document.getElementById("texto");
+  const contador = document.getElementById("contador");
+  const actualizarContador = () => contador.textContent = `${texto.value.length}/{{ max_len }}`;
+  texto.addEventListener("input", actualizarContador);
+  document.getElementById("limpiar").addEventListener("click", () => { texto.value = ""; actualizarContador(); texto.focus(); });
+  document.querySelectorAll(".example").forEach((button) => button.addEventListener("click", () => {
+    texto.value = button.dataset.message; actualizarContador(); texto.focus();
+  }));
+</script>
 {% endblock %}

@@ -1,0 +1,10 @@
+{
+  "tau": 0.7,
+  "comprobacion_prueba": {
+    "fn": 13,
+    "fn_confiados": 11,
+    "fp": 2
+  },
+  "spam_sin_marcadores_pct": 0.1392235609103079,
+  "nota": "Análisis descriptivo y exploratorio; no altera el modelo ni las decisiones congeladas."
+}

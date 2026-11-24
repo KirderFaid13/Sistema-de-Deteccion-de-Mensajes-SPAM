@@ -1,0 +1,5 @@
+conjunto,aceptados_como_legitimos,fn_confiados,auc_novedad,sim_mediana_fn,sim_mediana_legitimos,fn_recuperados_revisando_1pct,fn_recuperados_revisando_5pct,fn_recuperados_revisando_10pct,fn_recuperados_revisando_20pct
+entrenamiento (fuera de pliegue),2902,26,0.6779180485717342,0.19630055613511235,0.24764183486825359,0,1,4,8
+validación,972,9,0.7337025499019268,0.20888178818916964,0.26189738097183307,0,0,2,4
+prueba,973,11,0.7996597996597996,0.18629804549478962,0.2554948984884674,1,4,5,7
+los tres,4847,46,0.7179754217871277,0.19475843836377155,0.2514375714893034,1,4,11,19

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block titulo %}Prueba terminada{% endblock %}
+{% block contenido %}
+<div class="card">
+  <h2>Gracias por participar</h2>
+  <p>Respondiste {{ hechas }} de {{ total }} mensajes. Tus respuestas quedaron guardadas.</p>
+  <p class="meta">Para quien conduce la prueba: descarga las respuestas de todos los participantes de este equipo.</p>
+  <a class="btn" href="{{ url_for('estudio.respuestas_csv') }}">Descargar respuestas (CSV)</a>
+  <a class="btn sec" href="{{ url_for('estudio.inicio') }}">Siguiente participante</a>
+</div>
+{% endblock %}

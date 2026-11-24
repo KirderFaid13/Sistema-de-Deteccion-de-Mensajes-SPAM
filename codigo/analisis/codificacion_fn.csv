@@ -1,0 +1,27 @@
+msg_id,categoria,criterio
+4514,Relato o queja sobre spam,Un usuario cuenta en primera persona que ganó un premio y pregunta qué hacer
+2247,Relato o queja sobre spam,Advierte a otros sobre un mensaje de tarifa premium
+4069,Relato o queja sobre spam,Agradece una información y anuncia que no pagará un cobro
+1460,Relato o queja sobre spam,Se queja de cobros tras comprar un tono
+5542,Relato o queja sobre spam,Se queja de una factura de su operador
+751,Chiste o contenido de entretenimiento,Chiste sin llamada a la acción
+68,Chiste o contenido de entretenimiento,Chiste sin llamada a la acción
+2965,Chiste o contenido de entretenimiento,Chiste sin llamada a la acción
+2774,Chiste o contenido de entretenimiento,Reflexión de cadena sin llamada a la acción
+4144,Chiste o contenido de entretenimiento,Trivia con respuesta por letra
+3419,Chiste o contenido de entretenimiento,Mensaje afectuoso de un servicio de pago por SMS
+869,Oferta o servicio en tono conversacional,Pide dirección y fecha de nacimiento con lenguaje coloquial
+2821,Oferta o servicio en tono conversacional,Publicidad de una florería con teléfono gratuito
+3530,Oferta o servicio en tono conversacional,Venta de entradas de un club
+3132,Oferta o servicio en tono conversacional,Aviso de compra y cobro de un videoclip
+2915,Oferta o servicio en tono conversacional,Respuesta de un servicio de suscripción
+5379,Oferta o servicio en tono conversacional,Aviso de una subasta por SMS
+227,Oferta o servicio en tono conversacional,Horóscopo por palabra clave
+3460,Citas o contenido adulto,Invitación personal con teléfono
+1469,Citas o contenido adulto,Invitación personal con teléfono de tarifa especial
+415,Citas o contenido adulto,Servicio de citas con teléfono
+4949,Citas o contenido adulto,Promesa de un número gratuito para fiestas de adultos
+955,Fragmento truncado u ofuscado,Texto cortado a mitad de frase
+2558,Fragmento truncado u ofuscado,Texto cortado a mitad de frase
+713,Fragmento truncado u ofuscado,Sólo teléfono con horario y costo
+731,Fragmento truncado u ofuscado,Palabras pegadas y grafía alterada (drvgs)

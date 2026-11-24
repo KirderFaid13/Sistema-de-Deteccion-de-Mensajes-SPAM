@@ -1,0 +1,171 @@
+{
+  "integrante": "Goray Gonzales, Nicolás",
+  "fecha": "2026-11-10T00:46:03-05:00",
+  "equipo": {
+    "sistema": "Windows 11 (10.0.26300)",
+    "arquitectura": "AMD64",
+    "procesador": "AMD Ryzen 7 7730U with Radeon Graphics",
+    "nucleos_logicos": 16,
+    "memoria_gb": 15.3
+  },
+  "python": "3.13.7",
+  "versiones": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "matplotlib": "3.11.2",
+    "nbconvert": "7.17.2",
+    "pytest": "9.1.1"
+  },
+  "tiempos_s": {
+    "entorno": 165.2,
+    "notebook": 79.1,
+    "pruebas": 5.9
+  },
+  "sha256_dataset": "1587ea43e58e82b14ff1f5425c88e17f8496bfcdb67a583dbff9eefaf9963ce3",
+  "sha256_modelo_original": "de87978042e6c821cb8a4fb2dff3cee4ada58ac3ff1ef65ef0ea703e55482705",
+  "sha256_modelo_reproducido": "4457b3e00a2940f0dff49aaeae716a9b43c35c6dc29365b9e3f3db8047d960c5",
+  "modelo_identico_byte_a_byte": false,
+  "decisiones_reproducidas": {
+    "modelo": "linsvm",
+    "hiperparametros": {
+      "C": 10.0,
+      "ngram_range": [
+        1,
+        2
+      ],
+      "f1_cv": 0.9596675310627243
+    },
+    "tau": 0.7
+  },
+  "metricas_prueba_reproducidas": {
+    "tp": 137,
+    "fp": 2,
+    "fn": 13,
+    "tn": 963,
+    "precision_spam": 0.9856115107913669,
+    "recall_spam": 0.9133333333333333,
+    "f1_spam": 0.9480968858131488
+  },
+  "selectiva_reproducida": {
+    "n_aceptados": 1109,
+    "n_revision": 6,
+    "errores_aceptados": 11,
+    "error_aceptados": 0.009918845807033363
+  },
+  "archivos_comparados": 21,
+  "archivos_iguales": 21,
+  "archivos_distintos": [],
+  "tolerancia_numerica": 1e-09,
+  "detalle_comparacion": {
+    "decisiones_congeladas.json": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "campos": 12
+    },
+    "diagnostico_dataset.json": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "campos": 22
+    },
+    "evaluacion_final_prueba.json": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "campos": 85
+    },
+    "linea_base_validacion.json": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "campos": 12
+    },
+    "mejores_hiperparametros.json": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "campos": 8
+    },
+    "particiones.csv": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "filas": 5575
+    },
+    "tablas/calibracion_validacion.csv": {
+      "iguales": true,
+      "max_diferencia": 7.181755190543981e-14,
+      "filas": 3
+    },
+    "tablas/comparacion_validacion.csv": {
+      "iguales": true,
+      "max_diferencia": 1.4439838214030942e-14,
+      "filas": 3
+    },
+    "tablas/curva_aprendizaje_linsvm.csv": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "filas": 9
+    },
+    "tablas/curva_aprendizaje_logreg.csv": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "filas": 9
+    },
+    "tablas/cv_rejilla.csv": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "filas": 13
+    },
+    "tablas/diagnostico_fuga_cv.csv": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "filas": 5
+    },
+    "tablas/distribucion_clases.csv": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "filas": 3
+    },
+    "tablas/errores_prueba.csv": {
+      "iguales": true,
+      "max_diferencia": 5.551115123125783e-17,
+      "filas": 16
+    },
+    "tablas/fiabilidad_validacion_linsvm.csv": {
+      "iguales": true,
+      "max_diferencia": 8.673617379884035e-19,
+      "filas": 10
+    },
+    "tablas/fiabilidad_validacion_logreg.csv": {
+      "iguales": true,
+      "max_diferencia": 8.995026945513018e-13,
+      "filas": 11
+    },
+    "tablas/indicadores_textuales.csv": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "filas": 3
+    },
+    "tablas/particiones_resumen.csv": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "filas": 4
+    },
+    "tablas/umbrales_prueba_descriptivo.csv": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "filas": 7
+    },
+    "tablas/umbrales_validacion_linsvm.csv": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "filas": 7
+    },
+    "tablas/umbrales_validacion_logreg.csv": {
+      "iguales": true,
+      "max_diferencia": 0.0,
+      "filas": 7
+    }
+  },
+  "pruebas_unitarias": "4 passed in 4.91s",
+  "max_diferencia_numerica": 8.995026945513018e-13
+}

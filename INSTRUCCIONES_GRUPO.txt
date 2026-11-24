@@ -1,0 +1,97 @@
+DETECTOR DE SPAM SMS - GRUPO 03
+Lo que cada integrante tiene que hacer para la entrega final
+=============================================================
+
+Son dos tareas. En total toman unos 30 minutos y al final me envias DOS archivos.
+
+ANTES DE EMPEZAR
+----------------
+1. Necesitas Windows, internet y Python 3.13 de 64 bits.
+   Para comprobarlo, abre PowerShell y escribe:
+
+       py -3.13 --version
+
+   Si sale un error, instala Python 3.13 desde https://www.python.org/downloads/
+   y durante la instalacion marca la casilla "Add python.exe to PATH".
+
+2. Descomprime el ZIP en una carpeta de ruta corta, por ejemplo C:\spam-sms
+   (no lo dejes dentro de OneDrive ni lo abras desde el propio ZIP).
+
+3. Abre PowerShell dentro de esa carpeta: entra a la carpeta en el Explorador,
+   haz clic en la barra de direcciones, escribe  powershell  y pulsa Enter.
+   Debes estar en la carpeta que contiene "codigo", "Dataset" y "docs".
+
+
+TAREA 1 - REPRODUCIR EL EXPERIMENTO (5 a 10 minutos, se hace solo)
+------------------------------------------------------------------
+Escribe este comando con TUS apellidos y nombres entre comillas:
+
+       py -3.13 codigo/reproducir.py --integrante "Apellidos, Nombres"
+
+Que hace: copia el proyecto a una carpeta temporal, instala las versiones exactas,
+entrena de nuevo el modelo, lo evalua y compara todo con los resultados guardados.
+No cambia nada del proyecto.
+
+Al terminar debe decir:   Archivos de resultados iguales: 21 de 21
+y la linea de prueba:     VP/FP/FN/VN = 137/2/13/963
+
+ARCHIVO QUE ME ENVIAS:  el que aparece en  docs\reproduccion\
+                        con el nombre  reproduccion_<tu apellido>_<fecha>.json
+
+
+TAREA 2 - PRUEBA CON REVISORES (15 minutos por persona)
+-------------------------------------------------------
+Primero se prepara y se arranca la aplicacion (solo la primera vez tarda):
+
+       py -3.13 -m venv .venv
+       .\.venv\Scripts\python.exe -m pip install -r codigo/requirements-app.txt
+       .\.venv\Scripts\python.exe codigo/app/app.py
+
+Deja esa ventana abierta y entra en el navegador a:
+
+       http://127.0.0.1:5000/estudio
+
+Luego:
+  1. Escribe un codigo de participante. Usa las iniciales de tu apellido y un
+     numero, por ejemplo GOR01. No escribas tu nombre.
+  2. Elige "Integrante del grupo", tu nivel de ingles y marca la casilla.
+  3. Lee cada SMS y pulsa Legitimo o Spam. Son 60 mensajes en ingles.
+
+Reglas, iguales para todos:
+  - Haz esta tarea ANTES de leer el articulo o de abrir los archivos de la carpeta
+    "codigo/estudio": ahi aparecen algunos de estos mensajes con su respuesta.
+  - Hazlo de corrido, sin pausas: se mide el tiempo de cada respuesta.
+  - Sin traductor y sin preguntar a nadie.
+  - En computadora, no en celular.
+  - No comentes los mensajes con los que todavia no la hicieron.
+  - No se puede volver atras.
+
+Si puedes, pide a 1 o 2 personas que NO sean del grupo (familia, amigos) que la
+hagan en tu misma computadora: al terminar tu pulsas "Siguiente participante",
+ellos usan otro codigo (por ejemplo GOR02) y eligen "Persona externa al grupo".
+
+ARCHIVO QUE ME ENVIAS:  cuando terminen todos en tu computadora, pulsa
+                        "Descargar respuestas (CSV)" y renombra el archivo a
+                        respuestas_<tu apellido>.csv
+
+Para cerrar la aplicacion vuelve a la ventana de PowerShell y pulsa Ctrl+C.
+
+
+SI ALGO FALLA
+-------------
+- "py no se reconoce": falta instalar Python 3.13 (ver arriba).
+- Error al instalar paquetes: revisa tu internet y vuelve a ejecutar el mismo comando.
+- "Puerto 5000 ocupado": cierra otras ventanas de PowerShell donde este la aplicacion.
+- La Tarea 1 no dice "21 de 21": igual enviame el archivo .json y una captura de
+  la pantalla; ese resultado tambien sirve.
+- Cualquier otro error: enviame una captura de la ventana de PowerShell.
+
+
+PARA LA SUSTENTACION
+--------------------
+Cada uno debe poder explicar el codigo. Lee al menos:
+  - codigo/src/spam_sms/decision.py      (la regla de confianza y el umbral)
+  - codigo/src/spam_sms/modeling.py      (TF-IDF, SVM y calibracion)
+  - codigo/reproducir.py                 (lo que ejecutaste en la Tarea 1)
+  - codigo/app/estudio.py                (la prueba de la Tarea 2)
+El articulo esta en la carpeta Articulo y el guion de exposicion en GUION_EXPOSICION.md.

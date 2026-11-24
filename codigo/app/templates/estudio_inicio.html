@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block titulo %}Prueba con revisores{% endblock %}
+{% block contenido %}
+<div class="card">
+  <h2>Prueba controlada con revisores</h2>
+  <p>Vas a leer <b>{{ n }} mensajes SMS en inglés</b>, uno por uno, y a decidir si cada uno es <b>legítimo</b> o <b>spam</b>. Toma entre 10 y 15 minutos.</p>
+  <ul>
+    <li>Responde con tu propio criterio. No hay respuestas con trampa y no se te muestra lo que opina el sistema.</li>
+    <li>No uses traductores ni consultes a otra persona. Si dudas, elige la opción que te parezca más probable.</li>
+    <li>Hazlo de corrido, sin pausas: se mide el tiempo que tardas en cada mensaje.</li>
+    <li>No puedes volver atrás para cambiar una respuesta.</li>
+  </ul>
+  <p class="meta">Se entiende por spam un mensaje no solicitado, enviado de forma masiva, con fines comerciales o fraudulentos.</p>
+  {% if error %}<p class="error">Completa todos los campos y marca la casilla de aceptación.</p>{% endif %}
+  <form method="post" action="{{ url_for('estudio.iniciar') }}" class="form-estudio">
+    <label>Código de participante (no escribas tu nombre)
+      <input type="text" name="participante" maxlength="20" placeholder="Por ejemplo: R01" required>
+    </label>
+    <label>Participación
+      <select name="tipo" required>
+        <option value="">Elige una opción</option>
+        <option value="integrante">Integrante del grupo</option>
+        <option value="externo">Persona externa al grupo</option>
+      </select>
+    </label>
+    <label>Nivel de lectura en inglés
+      <select name="nivel_ingles" required>
+        <option value="">Elige una opción</option>
+        <option value="basico">Básico</option>
+        <option value="intermedio">Intermedio</option>
+        <option value="avanzado">Avanzado</option>
+      </select>
+    </label>
+    <label class="check">
+      <input type="checkbox" name="consentimiento" value="si" required>
+      Participo de forma voluntaria y acepto que se guarden mis respuestas y tiempos, identificados sólo por mi código, para un trabajo académico.
+    </label>
+    <button type="submit">Empezar</button>
+  </form>
+</div>
+{% endblock %}

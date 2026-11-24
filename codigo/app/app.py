@@ -55,6 +55,13 @@ CREATE TABLE IF NOT EXISTS revisiones (
 """
 
 app = Flask(__name__)
+app.config["DB_PATH"] = DB_PATH
+
+# Prueba controlada con revisores humanos: módulo aparte, misma base de datos.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from estudio import bp as estudio_bp  # noqa: E402
+app.register_blueprint(estudio_bp)
+
 ARTEFACTO = joblib.load(MODEL_PATH)
 MODELO, TAU, VERSION = ARTEFACTO["modelo"], float(ARTEFACTO["tau"]), ARTEFACTO.get("version", "v1")
 
@@ -114,6 +121,17 @@ def clasificar_mensaje():
     return render_template("resultado.html", texto=texto, r=r, tau=TAU, mensaje_id=cur.lastrowid)
 
 
+@app.route("/enviar_revision/<int:mensaje_id>", methods=["POST"])
+def enviar_revision(mensaje_id: int):
+    db().execute(
+        "UPDATE mensajes SET decision = ? WHERE id = ? "
+        "AND NOT EXISTS (SELECT 1 FROM revisiones WHERE mensaje_id = mensajes.id)",
+        (REVIEW, mensaje_id),
+    )
+    db().commit()
+    return redirect(url_for("pendientes"))
+
+
 @app.route("/pendientes")
 def pendientes():
     filas = db().execute(
@@ -143,6 +161,46 @@ def revisiones():
         "r.comentario, r.revisado_en FROM revisiones r JOIN mensajes m ON m.id = r.mensaje_id ORDER BY r.id DESC"
     ).fetchall()
     return render_template("revisiones.html", filas=filas)
+
+
+@app.route("/historial")
+def historial():
+    filtro = request.args.get("filtro", "todos")
+    filtros_validos = {"todos", AUTO_HAM, AUTO_SPAM, REVIEW}
+    if filtro not in filtros_validos:
+        filtro = "todos"
+
+    query = (
+        "SELECT m.*, r.etiqueta_revisor, r.revisor FROM mensajes m "
+        "LEFT JOIN revisiones r ON r.mensaje_id = m.id"
+    )
+    parametros = []
+    if filtro != "todos":
+        query += " WHERE m.decision = ?"
+        parametros.append(filtro)
+    query += " ORDER BY m.id DESC"
+    filas = db().execute(query, parametros).fetchall()
+
+    resumen = db().execute(
+        "SELECT COUNT(*) AS total, "
+        "SUM(decision = ?) AS spam, "
+        "SUM(decision = ?) AS legitimos, "
+        "SUM(decision = ?) AS pendientes "
+        "FROM mensajes",
+        (AUTO_SPAM, AUTO_HAM, REVIEW),
+    ).fetchone()
+    revisados = db().execute(
+        "SELECT COUNT(*) AS total, "
+        "SUM(m.etiqueta_modelo = r.etiqueta_revisor) AS aciertos "
+        "FROM mensajes m JOIN revisiones r ON r.mensaje_id = m.id"
+    ).fetchone()
+    return render_template(
+        "historial.html",
+        filas=filas,
+        filtro=filtro,
+        resumen=resumen,
+        revisados=revisados,
+    )
 
 
 @app.route("/revisiones.csv")

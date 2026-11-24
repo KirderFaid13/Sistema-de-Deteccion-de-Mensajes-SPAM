@@ -16,7 +16,11 @@
     </form>
   </div>
   {% else %}
-  <p>No hay mensajes pendientes.</p>
+  <div class="empty-state">
+    <strong>No hay mensajes pendientes.</strong>
+    <p>Clasifica un mensaje y, si el resultado no te convence, usa <b>Enviar a revisión humana</b> en la pantalla de resultado.</p>
+    <a class="btn" href="{{ url_for('inicio') }}">Clasificar un mensaje</a>
+  </div>
   {% endfor %}
 </div>
 {% endblock %}

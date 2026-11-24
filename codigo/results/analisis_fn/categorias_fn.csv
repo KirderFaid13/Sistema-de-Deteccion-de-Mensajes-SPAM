@@ -1,0 +1,6 @@
+categoria,fn,validacion,prueba,aceptados_con_confianza,sin_marcadores,p_spam_mediana
+Oferta o servicio en tono conversacional,7,5,2,4,4,0.2692
+Chiste o contenido de entretenimiento,6,3,3,6,6,0.0117
+Relato o queja sobre spam,5,0,5,3,3,0.2997
+Fragmento truncado u ofuscado,4,2,2,4,3,0.1639
+Citas o contenido adulto,4,3,1,3,1,0.11605
