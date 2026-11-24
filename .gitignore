@@ -18,7 +18,7 @@ venv/
 htmlcov/
 .coverage*
 
-# Mensajes y revisiones de cada instalación: nunca versionar la base de uso
+# Mensajes y revisiones de cada instalación: nunca versionar la base de uso ni respuestas de personas
 codigo/app/instance/
 *.db
 *.db-*
@@ -26,10 +26,14 @@ codigo/app/instance/
 *.sqlite3
 *.sqlite-*
 revisiones.csv
+respuestas_*.csv
+codigo/estudio/respuestas/*.csv
+!codigo/estudio/respuestas/.gitkeep
 
 # Archivos de editores y sistema operativo
 .vscode/
 .idea/
+.claude/
 .DS_Store
 Thumbs.db
 ~$*
